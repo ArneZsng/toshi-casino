@@ -1,5 +1,5 @@
-const Bot = require('./lib/Bot')
-const SOFA = require('sofa-js')
+const Bot = require('./lib/Bot');
+const SOFA = require('sofa-js');
 const Fiat = require('./lib/Fiat')
 const unit = require('./lib/unit')
 const FigureSymbols = [`🍐`, `🍌`, `🍉`, `🔔`, `🍋`, `🍓`, `🏆`, `7️⃣`, `🍒`, `🌞`]
@@ -84,12 +84,12 @@ function play(session) {
 // BUSINESS LOGIC
 
 function twoMatches(session, message, figure) {
-  sendMessage(session, `Oh wow, you got 2 ` + FigureSymbols[figure] + `s. Payday! 💸`)
+  sendMessage(session, `Oh wow, you got 2 ` + FigureSymbols[figure] + `'s. Payday! 💸`)
   session.sendEth(unit.fromWei(message.value, 'ether') * (2 + (figure/10)))
 }
 
 function threeMatches(session, message, figure) {
-  sendMessage(session, `Amazing, you got 3 ` + FigureSymbols[figure] + `s. Jackpot! 💰💰💰`)
+  sendMessage(session, `Amazing, you got 3 ` + FigureSymbols[figure] + `'s. Jackpot! 💰💰💰`)
   session.sendEth(unit.fromWei(message.value, 'ether') * (50 + figure))
 }
 
