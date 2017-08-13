@@ -1,7 +1,8 @@
 const Bot = require('./lib/Bot');
 const SOFA = require('sofa-js');
 const Fiat = require('./lib/Fiat');
-const FigureSymbols = [`🤡`, `💩`, `👻`, `🔔`, `🍋`, `🍒`, `🏆`, `7️⃣`, `💀`, `🌞`];
+const unit = require('./lib/unit');
+const FigureSymbols = [`🍐`, `🍌`, `🍉`, `🔔`, `🍋`, `🍓`, `🏆`, `7️⃣`, `🍒`, `🌞`];
 
 let bot = new Bot()
 
@@ -57,14 +58,11 @@ function onPayment(session, message) {
     } else if (message.status == 'confirmed') {
       // handle when the payment is actually confirmed!
       var figures = [randomDigit(), randomDigit(), randomDigit()];
-      console.log('test');
-      console.log(randomDigit());
-      console.log(figures);
       sendMessage(session, FigureSymbols[figures[0]] + `❔❔`);
       setTimeout(function() {
         sendMessage(session, FigureSymbols[figures[0]] + FigureSymbols[figures[1]] + `❔`);
         setTimeout(function() {
-          sendMessage(session, FigureSymbols[figures[0]] + FigureSymbols[figures[1]] + FigureSymbols[figures[2]] + ``);
+          sendMessage(session, FigureSymbols[figures[0]] + FigureSymbols[figures[1]] + FigureSymbols[figures[2]]);
           generateResults(session, message, figures);
         }, 2000);
       }, 2000);
@@ -90,12 +88,12 @@ function play(session) {
 
 function twoMatches(session, message, figure) {
   sendMessage(session, `Payday! 💸`);
-  session.sendEth(message.value * (2 + (figure/10)));
+  session.sendEth(unit.fromWei(message.value, 'ether') * (2 + (figure/10)));
 }
 
 function threeMatches(session, message, figure) {
   sendMessage(session, `Jackpot! 💰💰💰`);
-  session.sendEth(message.value * (100 + (10 * figure)));
+  session.sendEth(unit.fromWei(message.value, 'ether') * (50 + (10 * figure)));
 }
 
 function generateResults(session, message, figures) {
@@ -109,13 +107,6 @@ function generateResults(session, message, figures) {
     sendMessage(session, `Better luck next time! 🍀`);
   }
 }
-
-// example of how to store state on each user
-// function count(session) {
-//   let count = (session.get('count') || 0) + 1
-//   session.set('count', count)
-//   sendMessage(session, `${count}`)
-// }
 
 // HELPERS
 
