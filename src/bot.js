@@ -1,5 +1,5 @@
-const Bot = require('./lib/Bot');
-const SOFA = require('sofa-js');
+const Bot = require('./lib/Bot')
+const SOFA = require('sofa-js')
 const Fiat = require('./lib/Fiat')
 const unit = require('./lib/unit')
 const FigureSymbols = [`🍐`, `🍌`, `🍉`, `🔔`, `🍋`, `🍓`, `🏆`, `7️⃣`, `🍒`, `🌞`]
