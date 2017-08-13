@@ -1,8 +1,8 @@
-const Bot = require('./lib/Bot');
-const SOFA = require('sofa-js');
-const Fiat = require('./lib/Fiat');
-const unit = require('./lib/unit');
-const FigureSymbols = [`🍐`, `🍌`, `🍉`, `🔔`, `🍋`, `🍓`, `🏆`, `7️⃣`, `🍒`, `🌞`];
+const Bot = require('./lib/Bot')
+const SOFA = require('sofa-js')
+const Fiat = require('./lib/Fiat')
+const unit = require('./lib/unit')
+const FigureSymbols = [`🍐`, `🍌`, `🍉`, `🔔`, `🍋`, `🍓`, `🏆`, `7️⃣`, `🍒`, `🌞`]
 
 let bot = new Bot()
 
@@ -53,21 +53,17 @@ function onPayment(session, message) {
     // handle payments sent to the bot
     if (message.status == 'unconfirmed') {
       // payment has been sent to the ethereum network, but is not yet confirmed
-      sendMessage(session, `Let the games begin! 🎲`);
-      sendMessage(session, `❔❔❔`);
+      sendMessage(session, `Let the games begin! 🎲`)
+      sendMessage(session, `❔❔❔`)
     } else if (message.status == 'confirmed') {
       // handle when the payment is actually confirmed!
-      var figures = [randomDigit(), randomDigit(), randomDigit()];
-      sendMessage(session, FigureSymbols[figures[0]] + `❔❔`);
-      setTimeout(function() {
-        sendMessage(session, FigureSymbols[figures[0]] + FigureSymbols[figures[1]] + `❔`);
-        setTimeout(function() {
-          sendMessage(session, FigureSymbols[figures[0]] + FigureSymbols[figures[1]] + FigureSymbols[figures[2]]);
-          generateResults(session, message, figures);
-        }, 2000);
-      }, 2000);
+      var figures = [randomDigit(), randomDigit(), randomDigit()]
+      sendMessage(session, FigureSymbols[figures[0]] + `❔❔`)
+      sendMessage(session, FigureSymbols[figures[0]] + FigureSymbols[figures[1]] + `❔`)
+      sendMessage(session, FigureSymbols[figures[0]] + FigureSymbols[figures[1]] + FigureSymbols[figures[2]])
+      generateResults(session, message, figures)
     } else if (message.status == 'error') {
-      sendMessage(session, `There was an error with your payment! 🚫`);
+      sendMessage(session, `There was an error with your payment! 🚫`)
     }
   }
 }
@@ -80,31 +76,31 @@ function welcome(session) {
 
 function play(session) {
   Fiat.fetch().then((toEth) => {
-    session.requestEth(toEth.USD(1));
+    session.requestEth(toEth.USD(1))
   });
 }
 
 // BUSINESS LOGIC
 
 function twoMatches(session, message, figure) {
-  sendMessage(session, `Payday! 💸`);
-  session.sendEth(unit.fromWei(message.value, 'ether') * (2 + (figure/10)));
+  sendMessage(session, `Payday! 💸`)
+  session.sendEth(unit.fromWei(message.value, 'ether') * (2 + (figure/10)))
 }
 
 function threeMatches(session, message, figure) {
-  sendMessage(session, `Jackpot! 💰💰💰`);
-  session.sendEth(unit.fromWei(message.value, 'ether') * (50 + figure));
+  sendMessage(session, `Jackpot! 💰💰💰`)
+  session.sendEth(unit.fromWei(message.value, 'ether') * (50 + figure))
 }
 
 function generateResults(session, message, figures) {
   if (figures[0] == figures[1] && figures[1] == figures[2]) {
-    threeMatches(session, message, figures[0]);
+    threeMatches(session, message, figures[0])
   } else if (figures[0] == figures[1] || figures[0] == figures[2]) {
-    twoMatches(session, message, figures[0]);
+    twoMatches(session, message, figures[0])
   } else if (figures[1] == figures[2]) {
-    twoMatches(session, message, figures[1]);
+    twoMatches(session, message, figures[1])
   } else {
-    sendMessage(session, `Better luck next time! 🍀`);
+    sendMessage(session, `Better luck next time! 🍀`)
   }
 }
 
@@ -122,5 +118,5 @@ function sendMessage(session, message) {
 }
 
 function randomDigit() {
-  return Math.floor(Math.random() * 10);
+  return Math.floor(Math.random() * 10)
 }
