@@ -84,12 +84,12 @@ function play(session) {
 // BUSINESS LOGIC
 
 function twoMatches(session, message, figure) {
-  sendMessage(session, `Payday! 💸`)
+  sendMessage(session, `Oh wow, you got 2 ` + FigureSymbols[figure] + `s. Payday! 💸`)
   session.sendEth(unit.fromWei(message.value, 'ether') * (2 + (figure/10)))
 }
 
 function threeMatches(session, message, figure) {
-  sendMessage(session, `Jackpot! 💰💰💰`)
+  sendMessage(session, `Amazing, you got 3 ` + FigureSymbols[figure] + `s. Jackpot! 💰💰💰`)
   session.sendEth(unit.fromWei(message.value, 'ether') * (50 + figure))
 }
 
@@ -101,7 +101,7 @@ function generateResults(session, message, figures) {
   } else if (figures[1] == figures[2]) {
     twoMatches(session, message, figures[1])
   } else {
-    sendMessage(session, `Better luck next time! 🍀`)
+    sendMessage(session, `Hmm, unfortunately no match. Better luck next time! 🍀`)
   }
 }
 
