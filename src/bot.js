@@ -71,10 +71,11 @@ function onPayment(session, message) {
 // STATES
 
 function welcome(session) {
-  sendMessage(session, `Welcome to the Toshi Casino. Let me know when you are ready to play.`)
+  sendMessage(session, `Welcome to the Toshi Casino. With a little luck, you can turn the ETH you send to me into a fortune. Let me know when you are ready to play.`)
 }
 
 function play(session) {
+  sendMessage(session, `Get ready. The money you send to me will be your stake. For a different amount, just use the 'Pay' feature in the top right.`)
   Fiat.fetch().then((toEth) => {
     session.requestEth(toEth.USD(1))
   });
