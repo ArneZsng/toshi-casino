@@ -1,6 +1,6 @@
 # Toshi Casino
 
-To play in the Toshi Casino, download Toshi from [https://www.toshi.org/] and add @ToshiCasino or scan this code:
+To play in the Toshi Casino, download [Toshi](https://www.toshi.org/) from  and add @ToshiCasino or scan this code:
 
 ![@ToshiCasino on Toshi](https://github.com/ArneZsng/toshi-lottery/raw/master/attachments/toshi_casino_qr.png)
 
@@ -8,5 +8,5 @@ To play in the Toshi Casino, download Toshi from [https://www.toshi.org/] and ad
 
 ## References
 
-* [https://www.toshi.org]
-* Icon based on work by [Roundicons][https://www.flaticon.com/authors/roundicons] from [www.flaticon.com].
+* https://www.toshi.org
+* Icon based on work by [Roundicons][https://www.flaticon.com/authors/roundicons] from www.flaticon.com.
