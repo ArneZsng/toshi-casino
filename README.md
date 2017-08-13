@@ -9,4 +9,4 @@ To play in the Toshi Casino, download [Toshi](https://www.toshi.org/) from  and 
 ## References
 
 * https://www.toshi.org
-* Icon based on work by [Roundicons][https://www.flaticon.com/authors/roundicons] from www.flaticon.com.
+* Icon based on work by [Roundicons](https://www.flaticon.com/authors/roundicons) from www.flaticon.com.
