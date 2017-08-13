@@ -93,7 +93,7 @@ function twoMatches(session, message, figure) {
 
 function threeMatches(session, message, figure) {
   sendMessage(session, `Jackpot! 💰💰💰`);
-  session.sendEth(unit.fromWei(message.value, 'ether') * (50 + (10 * figure)));
+  session.sendEth(unit.fromWei(message.value, 'ether') * (50 + figure));
 }
 
 function generateResults(session, message, figures) {
