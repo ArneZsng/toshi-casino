@@ -1,7 +1,12 @@
 # Toshi Casino
 
-Icon based on work by [Roundicons][https://www.flaticon.com/authors/roundicons] from [www.flaticon.com]. 
+To play in the Toshi Casino, download Toshi from [https://www.toshi.org/] and add @ToshiCasino or scan this code:
 
-## See also
+![@ToshiCasino on Toshi](https://github.com/ArneZsng/toshi-lottery/raw/master/attachments/toshi_casino_qr.png)
+
+*Note:* This only works with fake money currently and is just a technical demo. No actual gambling involved.
+
+## References
 
 * [https://www.toshi.org]
+* Icon based on work by [Roundicons][https://www.flaticon.com/authors/roundicons] from [www.flaticon.com].
